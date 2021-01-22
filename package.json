@@ -1,0 +1,27 @@
+{
+  "name": "mds_b3_merlande_pierrick_dev_end2end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickpi/mds_b3_merlande_pierrick_dev_end2end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rickpi/mds_b3_merlande_pierrick_dev_end2end/issues"
+  },
+  "homepage": "https://github.com/rickpi/mds_b3_merlande_pierrick_dev_end2end#readme",
+  "dependencies": {
+    "nightwatch": "^1.5.1"
+  },
+  "devDependencies": {
+    "chromedriver": "^87.0.7",
+    "selenium-server": "^3.141.59"
+  }
+}
