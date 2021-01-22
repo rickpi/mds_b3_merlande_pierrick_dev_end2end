@@ -1,12 +1,10 @@
 module.exports = {
-  'Google\'s Search Functionality' : function (browser) {
+  'Open Uber Website' : function (browser) {
     browser
-      .url('https://www.google.com/ncr')
+      .url('https://www.uber.com/fr/fr/')
       .waitForElementVisible('body', 1000)
-      .setValue('input[type=text]', 'BrowserStack')
-      .click('input[name=btnK]')
-      .pause(1000)
-      .assert.title('BrowserStack - Google Search')
+      .assert.elementPresent('title')
+      .assert.elementPresent('head')
       .end();
   }
 };

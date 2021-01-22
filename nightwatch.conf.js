@@ -4,7 +4,7 @@ module.exports = {
     start_process: true,
     server_path: require('selenium-server').path,
     host: 'hub-cloud.browserstack.com',
-    port: 443
+    port: 80
   },
 
   test_settings: {
