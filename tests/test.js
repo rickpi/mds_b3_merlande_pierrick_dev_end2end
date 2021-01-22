@@ -78,4 +78,16 @@ describe('Uber', function() {
       .assert.visible('#googleLoginButton', 'The Google connection\'s button exists')
       .end();
   });
+
+  test('Check registration block in two sections', function (browser) {
+    browser
+      .waitForElementVisible('body')
+      .useXpath()
+      .assert.visible('//*[@id="main"]/nav/div/ul[4]/li[5]/button', 'Registration button is visible')
+      .click('//*[@id="main"]/nav/div/ul[4]/li[5]/button', () => console.log('Click registration in button'))
+      .assert.visible('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[1]/a', 'Driver registration button is visible')
+      .assert.visible('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[3]/a', 'Passenger registration button is visible')
+      .useCss()
+      .end();
+  });
 });
