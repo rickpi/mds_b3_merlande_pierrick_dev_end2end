@@ -115,29 +115,25 @@ describe('Uber', function() {
       .end();
   });
   
-  // test('Check registration driver section', function (browser) {
-  //   browser
-  //     .waitForElementVisible('body')
-  //     .useXpath()
-  //     .assert.visible('//*[@id="main"]/nav/div/ul[4]/li[5]/button', 'Registration button is visible')
-  //     .click('//*[@id="main"]/nav/div/ul[4]/li[5]/button', () => console.log('Click on registration button'))
-  //     .assert.visible('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[1]/a', 'Driver registration button is visible')
-  //     .click('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[1]/a', () => console.log('Click on driver registration button'))
-  //     .useCss()
-  //     .waitForElementVisible('body')
-  //     .assert.urlContains('https://www.uber.com/a/join-new', 'Redirect URL is correct')
-  //     .useXpath()
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[3]/div/input', 'Input email exists')
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[4]/div/input', 'Input firstname exists')
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[5]/div/input', 'Input lastname exists')
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[6]/div/input', 'Input phone exists')
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[7]/div/input', 'Input password exists')
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[8]/div/div/div[1]/input', 'Input city exists')
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[9]/div/input', 'Input invitation code exists')
-  //     .assert.visible('//*[@id="maincontent"]/div[2]/div/form/div[11]/button', 'Submit button exists')
-  //     .useCss()
-  //     .end();
-  // });
+  test('Check registration rider section', function (browser) {
+    browser
+      .waitForElementVisible('body')
+      .useXpath()
+      .assert.visible('//*[@id="main"]/nav/div/ul[4]/li[5]/button', 'Registration button is visible')
+      .click('//*[@id="main"]/nav/div/ul[4]/li[5]/button', () => console.log('Click on registration button'))
+      .assert.visible('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[3]/a', 'Rider registration button is visible')
+      .click('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[3]/a', () => console.log('Click on rider registration button'))
+      .useCss()
+      .waitForElementVisible('body')
+      .assert.urlContains('https://auth.uber.com/login/?uber_client_name=riderSignUp', 'Redirect URL is correct')
+      .assert.visible('#firstName', 'Input firstname exists')
+      .assert.visible('#lastName', 'Input lastname exists')
+      .assert.visible('#mobile', 'Input phone exists')
+      .assert.visible('#email', 'Input email exists')
+      .assert.visible('#addPassword', 'Input password exists')
+      .assert.visible('#answerForm > button', 'Submit button exists')
+      .end();
+  });
 
 
 });
