@@ -135,7 +135,7 @@ describe('Uber', function() {
       .end();
   });
 
-  test('Check registration rider section', function (browser) {
+  test('Rider registratiob souldnt pass', function (browser) {
     browser
       .waitForElementVisible('body')
       .useXpath()
@@ -149,6 +149,36 @@ describe('Uber', function() {
       .click('#answerForm > button', () => console.log('Click on submit button'))
       .assert.urlContains('https://auth.uber.com/login/?uber_client_name=riderSignUp', 'We are not redirected')
       .assert.containsText('#error-caption-mobile', 'This phone number is invalid', 'Error appears on phone field')
+      .end();
+  });
+  
+  test('Rider registration should pass', function (browser) { // this test will fail because I have already an account
+    browser
+      .waitForElementVisible('body')
+      .useXpath()
+      .assert.visible('//*[@id="main"]/nav/div/ul[4]/li[5]/button', 'Registration button is visible')
+      .click('//*[@id="main"]/nav/div/ul[4]/li[5]/button', () => console.log('Click on registration button'))
+      .assert.visible('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[3]/a', 'Rider registration button is visible')
+      .click('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[3]/a', () => console.log('Click on rider registration button'))
+      .useCss()
+      .waitForElementVisible('body')
+      .assert.urlContains('https://auth.uber.com/login/?uber_client_name=riderSignUp', 'Redirect URL is correct')
+      .assert.visible('#firstName', 'Input firstname exists')
+      .setValue('#firstName', 'Pierrick', () => console.log('Fill firstname field'))
+      .assert.visible('#lastName', 'Input lastname exists')
+      .setValue('#lastName', 'MERLANDE', () => console.log('Fill lastname field'))
+      .assert.visible('#mobile', 'Input phone exists')
+      .setValue('#mobile', '0641831716', () => console.log('Fill phone field'))
+      .assert.visible('#email', 'Input email exists')
+      .setValue('#email', 'merlandepierrick@gmail.com', () => console.log('Fill email field'))
+      .assert.visible('#addPassword', 'Input password exists')
+      .setValue('#addPassword', 'LeMotDePasse_PourLesTestsE2E', () => console.log('Fill password field'))
+      .assert.visible('#answerForm > button', 'Submit button exists')
+      .click('#answerForm > button', () => console.log('Click on submit button'))
+      .waitForElementVisible('body')
+      .assert.urlContains('https://auth.uber.com/login/session/', 'Redirect URL is correct')
+      .useXpath()
+      .assert.containsText('//*[@id="app-content"]/div/div/div/div/div/div/div/div[2]/div[1]/div[1]', 'Vous pourrez bienôt commander une course')
       .end();
   });
 });
