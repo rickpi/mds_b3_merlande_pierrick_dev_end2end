@@ -135,5 +135,20 @@ describe('Uber', function() {
       .end();
   });
 
-
+  test('Check registration rider section', function (browser) {
+    browser
+      .waitForElementVisible('body')
+      .useXpath()
+      .assert.visible('//*[@id="main"]/nav/div/ul[4]/li[5]/button', 'Registration button is visible')
+      .click('//*[@id="main"]/nav/div/ul[4]/li[5]/button', () => console.log('Click on registration button'))
+      .assert.visible('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[3]/a', 'Rider registration button is visible')
+      .click('//*[@id="root"]/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/section/div/div/div/div/div[3]/a', () => console.log('Click on rider registration button'))
+      .useCss()
+      .waitForElementVisible('body')
+      .assert.visible('#answerForm > button', 'Submit button exists')
+      .click('#answerForm > button', () => console.log('Click on submit button'))
+      .assert.urlContains('https://auth.uber.com/login/?uber_client_name=riderSignUp', 'We are not redirected')
+      .assert.containsText('#error-caption-mobile', 'This phone number is invalid', 'Error appears on phone field')
+      .end();
+  });
 });
